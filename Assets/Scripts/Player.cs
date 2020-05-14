@@ -4,50 +4,22 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    private CharacterController _characterController;
     [SerializeField]
     private float _speed = 6.0f;
     [SerializeField]
     private float _jumpSpeed = 6.0f;
     [SerializeField]
-    private float _gravity  = 6.0f;
-     [SerializeField]
-    private Vector3 _moveDirection = Vector3.zero;
-     private bool _canDoubleJump;
-
-    // Start is called before the first frame update
+    private float _moveInput;
+    private Rigidbody2D _rigidbody;
     void Start()
     {
-         _characterController = GetComponent<CharacterController>();
-         _canDoubleJump = false;
-
-         if(_characterController == null)
-         {
-             Debug.Log("Character Controller is null");
-         }
+        _rigidbody = GetComponent<Rigidbody2D>();
     }
 
-    // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        if (_characterController.isGrounded)
-        {
-            _moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0.0f,0.0f);
-            _moveDirection *= _speed;
-
-            if (Input.GetButton("Jump"))
-            {
-                _moveDirection.y = _jumpSpeed;
-                _canDoubleJump = true;
-            }
-        }
-        else if (Input.GetKeyDown(KeyCode.Space) && _canDoubleJump == true)
-        {
-            _moveDirection.y += _jumpSpeed;
-            _canDoubleJump = false;
-        }
-        _moveDirection.y -= _gravity * Time.deltaTime;
-        _characterController.Move(_moveDirection * Time.deltaTime);
+        _moveInput = Input.GetAxis("Horizontal");
+        _rigidbody.velocity = new Vector2(_moveInput * _speed, _rigidbody.velocity.y);
     }
 }
 
