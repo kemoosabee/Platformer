@@ -8,7 +8,6 @@ public class Patrol : MonoBehaviour
     private float _speed = 1.0f;
     private float _distance = 1.0f;
     private float _attackRange = 1.0f;
-
     private bool _movingRight = true;
     [SerializeField]
     private Transform groundDetection;
