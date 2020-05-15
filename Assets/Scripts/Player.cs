@@ -67,6 +67,6 @@ public class Player : MonoBehaviour
             _facingRight = false;
             transform.eulerAngles = new Vector3(0, 0, 0);
         }
+
     }
 }
-
