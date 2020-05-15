@@ -4,22 +4,22 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    [SerializeField]
-    private float _speed = 6.0f;
-    [SerializeField]
-    private float _jumpSpeed = 6.0f;
-    [SerializeField]
-    private float _moveInput;
-    private Rigidbody2D _rigidbody;
+    
+    private CharacterController _CharacterController;
+    // Start is called before the first frame update
     void Start()
     {
-        _rigidbody = GetComponent<Rigidbody2D>();
+         _CharacterController = GetComponent<CharacterController>();
+
+         if(_CharacterController == null)
+         {
+             Debug.Log("Character Controller is null");
+         }
     }
 
-    void FixedUpdate()
+    // Update is called once per frame
+    void Update()
     {
-        _moveInput = Input.GetAxis("Horizontal");
-        _rigidbody.velocity = new Vector2(_moveInput * _speed, _rigidbody.velocity.y);
+
     }
 }
-
