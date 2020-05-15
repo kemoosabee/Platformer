@@ -5,25 +5,6 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-<<<<<<< HEAD
-    
-    private CharacterController _CharacterController;
-    // Start is called before the first frame update
-    void Start()
-    {
-         _CharacterController = GetComponent<CharacterController>();
-
-         if(_CharacterController == null)
-         {
-             Debug.Log("Character Controller is null");
-         }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-=======
     [SerializeField]
     private float _speed = 2.0f;
     private float _moveInput;
@@ -86,6 +67,6 @@ public class Player : MonoBehaviour
             _facingRight = false;
             transform.eulerAngles = new Vector3(0, 0, 0);
         }
->>>>>>> master
+
     }
 }
